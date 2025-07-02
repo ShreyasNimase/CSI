@@ -18,6 +18,17 @@ function App() {
     setTodos(reducedTodo);
   };
 
+  const handleDeleteCompletedTodo = (index) => {
+    let reducedCompletedTodos = [...completedTodos];
+    reducedCompletedTodos.splice(index, 1);
+
+    setCompletedTodos(reducedCompletedTodos);
+    localStorage.setItem(
+      "completedTodos",
+      JSON.stringify(reducedCompletedTodos)
+    );
+  };
+
   const handleAddTodo = () => {
     let newTodoItem = {
       title: newTitle,
@@ -38,7 +49,8 @@ function App() {
     let h = now.getHours();
     let m = now.getMinutes();
     let s = now.getSeconds();
-    let completedOn = dd + "-" + mm + "-" + yyyy + "at" + h + ":" + m + ":" + s;
+    let completedOn =
+      dd + "-" + mm + "-" + yyyy + " at " + h + ":" + m + ":" + s;
 
     let filteredItem = {
       ...allTodos[index],
@@ -102,7 +114,7 @@ function App() {
         <div className="btn-area">
           <button
             className={`secondaryBtn ${
-              isCompleteScreen == false ? "active" : ""
+              isCompleteScreen === false ? "active" : ""
             }`}
             onClick={() => setIsCompleteScreen(false)}
           >
@@ -110,7 +122,7 @@ function App() {
           </button>
           <button
             className={`secondaryBtn ${
-              isCompleteScreen == true ? "active" : ""
+              isCompleteScreen === true ? "active" : ""
             }`}
             onClick={() => setIsCompleteScreen(true)}
           >
@@ -156,7 +168,7 @@ function App() {
                   <div>
                     <AiOutlineDelete
                       className="icon"
-                      onClick={() => handleDeleteTodo(index)}
+                      onClick={() => handleDeleteCompletedTodo(index)}
                       title="Delete?"
                     />
                   </div>
