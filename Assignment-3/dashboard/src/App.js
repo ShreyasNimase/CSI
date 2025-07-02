@@ -1,35 +1,29 @@
-import React, { useEffect } from "react";
+import React from "react";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./pages/Dashboard";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { FiSettings } from "react-icons/fi";
-import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import Calendar from "./pages/Calendar";
+import Kanban from "./pages/Kanban";
+import ThemeProvider from "./context/ThemeContext";
 
-const App = () => {
-  const activeMenu = true;
-
+function App() {
   return (
-    <div className="flex min-h-screen dark:bg-main-dark-bg ">
+    <ThemeProvider>
       <Router>
-        <div className="fixed bottom-4 right-4 z-[1000]">
-          <TooltipComponent content="Settings" position="Top">
-            <button
-              type="button"
-              className="text-3xl p-3 hover:drop-shadow-x1 hower:bg-light-gray text-white"
-              style={{ background: "blue", borderRadius: "50%" }}
-            >
-              <FiSettings />
-            </button>
-          </TooltipComponent>
-        </div>
-        {activeMenu ? (
-          <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-            Sidbar
+        <div className="app">
+          <Sidebar />
+          <div className="main-content">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/kanban" element={<Kanban />} />
+            </Routes>
           </div>
-        ) : (
-          <div className="w-0 dark:bg-secondary-dark-bg">Sidebar w-0</div>
-        )}
+        </div>
       </Router>
-    </div>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
