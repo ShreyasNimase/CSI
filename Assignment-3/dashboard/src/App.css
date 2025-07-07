@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   transition: background 0.4s ease, color 0.4s ease;
+  background-color: #f4f4f4;
 }
 
 .app {
@@ -11,61 +12,40 @@ body {
 }
 
 .sidebar {
-  width: 220px;
-  background-color: #333;
+  width: 240px;
+  background-color: #1e1e2f;
   color: white;
-  padding: 20px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  transition: background 0.3s ease;
+  gap: 1.5rem;
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  text-align: center;
+  color: #90caf9;
 }
 
 .sidebar a {
   color: #fff;
   text-decoration: none;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background 0.2s;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .sidebar a:hover {
-  background-color: #555;
+  background-color: #3949ab;
 }
 
 .main-content {
   flex: 1;
-  padding: 20px;
-  background-color: #f4f4f4;
+  padding: 30px;
+  background-color: #fafafa;
   overflow-y: auto;
   transition: background-color 0.4s ease;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-  margin-bottom: 30px;
-}
-
-input,
-button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
-  border: none;
-  transition: background 0.2s ease;
-}
-
-button:hover {
-  background-color: #45a049;
 }
 
 .light {
@@ -74,10 +54,10 @@ button:hover {
 }
 
 .dark {
-  background: #222;
+  background: #121212;
   color: white;
 }
 
 .dark .main-content {
-  background-color: #333;
+  background-color: #1e1e1e;
 }
