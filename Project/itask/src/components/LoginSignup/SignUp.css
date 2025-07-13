@@ -1,53 +1,67 @@
-/* Signup.css */
-
+/* Full white background */
 .signup-container {
-  width: 400px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #f4f6f8;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Grey signup box */
+.signup-form {
+  background-color: #f4f6f8;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Title centered */
 .form-title {
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
   font-size: 24px;
   font-weight: 600;
-  border-bottom: 1px solid #ccc;
+  color: #222;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
 
-
+/* Form layout */
 .signup-form .form-group {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .signup-form label {
   margin-bottom: 6px;
   color: #333;
   font-weight: 500;
+  text-align: left;
+  width: 100%;
 }
 
 .signup-form input {
   padding: 10px;
   font-size: 16px;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 6px;
   outline: none;
-  transition: 0.3s;
 }
 
 .signup-form input:focus {
   border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
 .error {
-  color: red;
+  color: #d93025;
   font-size: 13px;
   margin-top: 4px;
 }
@@ -57,7 +71,7 @@
   padding: 12px;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: white;
   background-color: #007bff;
   border: none;
   border-radius: 6px;
@@ -67,4 +81,11 @@
 
 .submit-btn:hover {
   background-color: #0056b3;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 500px) {
+  .signup-form {
+    padding: 20px;
+  }
 }

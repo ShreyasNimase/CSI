@@ -19,7 +19,6 @@ const Login = () => {
 
   const handleSubmit = (values) => {
     const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
-
   if (
     storedUser &&
     values.username === storedUser.username &&
@@ -27,6 +26,7 @@ const Login = () => {
   ) {
     alert("Login successful!");
     localStorage.setItem("isLoggedIn", true);
+    localStorage.setItem("username", values.username);
     navigate("/home");
   } else {
     alert("Invalid credentials");

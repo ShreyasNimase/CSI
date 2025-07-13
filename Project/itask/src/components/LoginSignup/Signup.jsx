@@ -29,9 +29,10 @@ const Signup = () => {
         }}
         validationSchema={signupSchema}
         onSubmit={(values) => {
+          localStorage.setItem("username", values.username);
           localStorage.setItem("registeredUser", JSON.stringify(values));
           alert("Signup successful!");
-          navigate('/login')
+          navigate('/')
         }}
       >
         {() => (
