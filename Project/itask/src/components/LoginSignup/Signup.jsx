@@ -1,38 +1,74 @@
-import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import "./Signup.css"; // Import the CSS file
 
-function Signup() {
+
+const Signup = () => {
+ const navigate = useNavigate();
+
+  const signupSchema = Yup.object({
+    username: Yup.string().required("Username is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Confirm Password is required"),
+  });
+
   return (
     <div className="signup-container">
-      <div className="signup-box">
-        <h2>Registration</h2>
-        <form className="signup-form">
-          <div className="form-group">
-            <label htmlFor="name" className="signup-label">Name: </label>
-            <input type="text" name="name" id="name" />
-          </div>
-         <div className="form-group">
-            <label htmlFor="email" className="signup-label" >Email: </label>
-            <input type="email" name="email" id="email" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="name" className="signup-label" >Password: </label>
-            <input type="text" name="name" id="name" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="confirmPassword" className="signup-label">Confirm Password: </label>
-            <input type="password" name="confirmPassword" id="confirmPassword" />
-          </div>
-        </form>
-        <div className="policy">
-              <input type="checkbox" id="terms"/>
-              <label htmlFor="terms">I accept all terms & conditions</label>
-        </div>
-        <Link to='/login'>
-       <button className="signup-button">Register Now</button>
-      </Link>
-      </div>
+      <Formik
+        initialValues={{
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        }}
+        validationSchema={signupSchema}
+        onSubmit={(values) => {
+          localStorage.setItem("registeredUser", JSON.stringify(values));
+          alert("Signup successful!");
+          navigate('/login')
+        }}
+      >
+        {() => (
+          <Form className="signup-form">
+            <h2 className="form-title">Registration Form</h2>{" "}
+            <div className="form-group">
+              <label htmlFor="username">Username:</label>
+              <Field name="username" type="text" />
+              <ErrorMessage name="username" component="div" className="error" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <Field name="email" type="email" />
+              <ErrorMessage name="email" component="div" className="error" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password:</label>
+              <Field name="password" type="password" />
+              <ErrorMessage name="password" component="div" className="error" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <Field name="confirmPassword" type="password" />
+              <ErrorMessage
+                name="confirmPassword"
+                component="div"
+                className="error"
+              />
+            </div>
+            <button type="submit" className="submit-btn">
+              Register Now
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
-}
+};
 
 export default Signup;
