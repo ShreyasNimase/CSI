@@ -21,83 +21,12 @@ html, body {
   width: 100%; /* ✅ Ensure full width */
 }
 
-/* Navbar */
-.home-header {
-  background-color: #007bff;
-  color: white;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; /* ✅ Full width */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.navbar-user-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.username-label {
-  font-size: 16px;
-  font-weight: 500;
-  margin-right: 10px;
-  color: #ffffff;
-}
-
-/* Logout Button */
-.logout-btn {
-  background-color: #ffffff;
-  color: #007bff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.logout-btn:hover {
-  background-color: #e0e0e0;
-}
-
-/* Main content */
-.home-main {
-  flex: 1;
-  padding: 30px 40px;
-  background-color: #ffffff;
-  width: 100%; /* ✅ Full width content area */
-}
-
-.welcome-section,
-.features-section {
-  margin-bottom: 20px;
-}
-
-.features-section ul {
-  padding-left: 20px;
-}
-
-/* Footer */
-.home-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  width: 100%; /* ✅ Full width footer */
-}
-
 /* Mobile responsive */
 @media (max-width: 600px) {
   .home-header {
     flex-direction: column;
     gap: 10px;
     text-align: center;
-  }
-
-  .logout-btn {
-    width: 100%;
   }
 
   .home-main {
