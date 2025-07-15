@@ -3,8 +3,8 @@ import "./App.css";
 import Login from "./components/loginSignup/Login";
 import Signup from "./components/loginSignup/Signup";
 import Home from "./components/home/Home";
-import Board from "./components/kanban/Board";
 import Layout from "./components/Layout";
+import KanbanPage from "./components/kanban/KanbanPage";
 
 
 
@@ -17,7 +17,7 @@ function App() {
 
         <Route element={<Layout />}>
         <Route path="/home" element={<Home/>}></Route>
-        <Route path="/kanban" element={<Board />}></Route>
+        <Route path="/kanban" element={<KanbanPage />}></Route>
         </Route>
       </Routes>
     </div>

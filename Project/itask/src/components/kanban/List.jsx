@@ -1,34 +1,36 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import CreateCard from "./CreateCard";
-import Card from "./Card";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Card from './Card';
+import { useDispatch } from 'react-redux';
+import { deleteCard } from '../../redux/cardsSlice';
+import './Kanban.css';
 
-const List = ({ listTitle }) => {
-  const [cards, setCards] = useState([]);
+const List = ({ listName, listId, cards, onEdit }) => {
+  const dispatch = useDispatch();
 
-  const addCard = (title) => {
-    const newCard = {
-      id: Date.now(),
-      title,
-    };
-    setCards([...cards, newCard]);
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this card?')) {
+      dispatch(deleteCard(id));
+    }
   };
 
   return (
-    <div className="list">
-      <h3>{listTitle}</h3>
-      <div className="card-list">
+    <div className="kanban-column">
+      <h4 className="kanban-column-title">{listName}</h4>
+      <div className="kanban-cards-container">
         {cards.map((card) => (
-          <Card key={card.id} title={card.title} />
+          <Card key={card.id} card={card} onEdit={onEdit} onDelete={handleDelete} />
         ))}
-        <CreateCard onAddCard={addCard} />
       </div>
     </div>
   );
 };
 
 List.propTypes = {
-  listTitle: PropTypes.string.isRequired,
+  listName: PropTypes.string.isRequired,
+  listId: PropTypes.string.isRequired,
+  cards: PropTypes.array.isRequired,
+  onEdit: PropTypes.func.isRequired,
 };
 
 export default List;
